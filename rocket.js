@@ -20,6 +20,8 @@ var bY = 200;
 document.addEventListener('keyup', (e) => {
     if (e.code === "ArrowUp" && bY >= rocket.height / 2) bY -= 25;
     else if (e.code === "ArrowDown" && bY <= cvs.height - rocket.height) bY += 25;
+    else if (e.code === "ArrowRight" && bX <= cvs.width - rocket.width) bX += 25;
+    else if (e.code === "ArrowLeft" && bX >= rocket.width / 2) bX -= 25;
 });
 
 
@@ -48,6 +50,7 @@ function draw() {
         if (bX + rocket.width >= asteroids[i].x && bX <= asteroids[i].x + asteroid.width
             && ((bY <= asteroids[i].y + asteroid.height && bY + rocket.height >= asteroids[i].y))) {
             location.reload(); // reload the page
+            alert("Game Over");
         }
     }
     ctx.drawImage(rocket, bX, bY);
